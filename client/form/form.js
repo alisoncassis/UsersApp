@@ -20,3 +20,34 @@ Template.form.events({
 		$("#profile").val("");
 	}
 });
+
+Template.form.onRendered( () => {
+
+	$('#users_form').validate({
+		rules: {
+			name: {
+				required: true
+			},
+			email: {
+				required: true,
+				uniqueEmail: true
+			},
+			profile: {
+				required: true
+			}
+		},
+		messages: {
+			name: {
+				required: 'Qual o nome?'
+			},
+			email: {
+				required: 'Qual o email?',
+				uniqueEmail: 'O email já existe...'
+			},
+			profile: {
+				required: 'Qual o perfil?'
+			}
+		}
+	});
+
+});
